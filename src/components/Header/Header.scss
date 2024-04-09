@@ -1,0 +1,15 @@
+@import "../../App.scss";
+
+.header{
+    background: $clr-yellow;
+
+    @media screen and (max-width: 992px){
+        .header-cnt-top{
+            flex-direction: column;
+            .header-cnt-top-l{
+                margin-bottom: 4px;
+            }
+        }
+    }
+    
+}

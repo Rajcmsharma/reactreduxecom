@@ -1,0 +1,26 @@
+@import "../../App.scss";
+.cart-message{
+    padding: 2rem;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    margin:auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 3px;
+
+    .cart-message-icon{
+        margin-bottom: 1.7rem;
+        img{
+            width: 45px;
+            height: 45px;
+            margin: auto;
+        }
+    }
+    
+}
