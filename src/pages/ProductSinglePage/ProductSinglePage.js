@@ -54,25 +54,32 @@ const ProductSinglePage = () => {
   const addToCartHandler = (product) => {
     let discountedPrice = (product?.price) - (product?.price * (product?.discountPercentage / 100));
     let totalPrice = quantity * discountedPrice;
-
-    dispatch(addToCart({ ...product, quantity: quantity, totalPrice, discountedPrice }));
-    setcartMessageStatus(true);
+    if (product?.stock) {
+      dispatch(addToCart({ ...product, quantity: quantity, totalPrice, discountedPrice }));
+      setcartMessageStatus(true);
+    }
+    else{
+      alert("Product is out of stock")
+    }
   }
 
   const StarRating = ({ rating }) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
-  
+    const emptyStars = (hasHalfStar) ? (5 - fullStars - 1) : (5 - fullStars);
     return (
       <div>
         {[...Array(fullStars)].map((_, index) => (
-          <span key={index} className="star-icon"><i class="fa-solid fa-star"></i></span>
+          <span key={index} className="star-icon"><i className="fa-solid fa-star"></i></span>
         ))}
-        {hasHalfStar && <span className="star-icon"><i class="fa-solid fa-star-half"></i></span>}
+        {hasHalfStar && <span className="star-icon"><i className="fa-solid fa-star-half-stroke"></i></span>}
+        {[...Array(emptyStars)].map((_, index) => (
+          <span key={index} className="star-icon"><i className="fa-regular fa-star"></i></span>
+        ))}
       </div>
     );
   };
-  
+
 
   return (
     <main className='py-5 bg-whitesmoke'>
@@ -119,7 +126,7 @@ const ProductSinglePage = () => {
                 <div className='info flex align-center flex-wrap fs-14'>
                   <div className='rating'>
                     <span className='mx-1'>
-                      <StarRating rating={product?.rating || 0 }/>
+                      <StarRating rating={product?.rating || 0} />
                     </span>
                   </div>
                   <div className='vert-line'></div>
