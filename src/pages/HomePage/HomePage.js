@@ -13,7 +13,7 @@ const HomePage = () => {
   const categories = useSelector(getAllCategories);
 
   useEffect(() => {
-    dispatch(fetchAsyncProducts(50));
+    dispatch(fetchAsyncProducts(70));
   }, []);
 
   const products = useSelector(getAllProducts);
@@ -32,10 +32,10 @@ const HomePage = () => {
     }
   }
 
-  let catProductsOne = products.filter(product => product.category === categories[2]);
-  let catProductsTwo = products.filter(product => product.category === categories[3]);
-  let catProductsThree = products.filter(product => product.category === categories[4]);
-  let catProductsFour = products.filter(product => product.category === categories[5]);
+  let catProductsOne = products.filter(product => product.category === categories[0]?.slug);
+  let catProductsTwo = products.filter(product => product.category === categories[2]?.slug);
+  let catProductsThree = products.filter(product => product.category === categories[3]?.slug);
+  let catProductsFour = products.filter(product => product.category === categories[4]?.slug);
 
   return (
     <main>
@@ -54,28 +54,28 @@ const HomePage = () => {
 
             <div className='categories-item'>
               <div className='title-md'>
-                <h3>{categories[2]}</h3>
+                <h3>{categories[0]?.name}</h3>
               </div>
               {productStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsOne} />}
             </div>
 
             <div className='categories-item'>
               <div className='title-md'>
-                <h3>{categories[3]}</h3>
+                <h3>{categories[2]?.name}</h3>
               </div>
               {productStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsTwo} />}
             </div>
 
             <div className='categories-item'>
               <div className='title-md'>
-                <h3>{categories[4]}</h3>
+                <h3>{categories[3]?.name}</h3>
               </div>
               {productStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsThree} />}
             </div>
 
             <div className='categories-item'>
               <div className='title-md'>
-                <h3>{categories[5]?.replace("-"," ")}</h3>
+                <h3>{categories[4]?.name}</h3>
               </div>
               {productStatus === STATUS.LOADING ? <Loader /> : <ProductList products={catProductsFour} />}
             </div>

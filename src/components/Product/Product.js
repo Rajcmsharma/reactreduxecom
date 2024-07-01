@@ -8,7 +8,7 @@ const Product = ({product}) => {
     <Link to = {`/product/${product?.id}`} key = {product?.id}>
       <div className='product-item bg-white'>
         <div className='product-item-img'>
-          <img className='img-cover' src = {product?.images[0]} alt = {product.title} />
+          <img className='img-cover' src = {product?.thumbnail} alt = {product.title} />
         </div>
         <div className='product-item-info fs-14'>
           <div className='brand'>

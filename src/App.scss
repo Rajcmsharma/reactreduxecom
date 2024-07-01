@@ -250,7 +250,12 @@ input, textarea, select{
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   h3{
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0);
+    text-shadow: 
+    0 1px 0 #fff,  /* White highlight at the top */
+    0 -1px 0 #000, /* Dark shadow at the bottom */
+    1px 1px 5px rgba(0, 0, 0, 0.3),  /* Slight shadow to the right and bottom */
+    -1px -1px 5px rgba(0, 0, 0, 0.3);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
